@@ -11,6 +11,7 @@
     <modules>
         <module>snakeyaml-old-version-test</module>
         <module>snakeyaml-new-version-test</module>
+        <module>minimal-problem-reproduction</module>
     </modules>
 
     <properties>
