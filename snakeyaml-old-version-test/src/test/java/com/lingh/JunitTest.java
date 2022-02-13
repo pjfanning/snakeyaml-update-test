@@ -23,13 +23,28 @@ public class JunitTest {
         System.out.println(marshal);
         System.out.println("print end-------------------------");
         YamlExecuteProcessContext unmarshal = YamlEngine.unmarshal(marshal, YamlExecuteProcessContext.class);
-        System.out.println("test problem out class ---------"+unmarshal.getUnitStatuses().getClass().getName());
+        System.out.println("test problem out class ---------" + unmarshal.getUnitStatuses().getClass().getName());
         for (YamlExecuteProcessUnit unit : unmarshal.getUnitStatuses()) {
-            System.out.println("test problem in class ---------"+unit.getClass().getName());
+            System.out.println("test problem in class ---------" + unit.getClass().getName());
             if (unit.getStatus() != ExecuteProcessConstants.EXECUTE_STATUS_DONE) {
                 return;
             }
         }
+    }
 
+    @Test
+    public void snakeYamlTest2() {
+        String marshal = "unitStatuses: !!set\n" +
+                "  ? status: EXECUTE_STATUS_DONE\n" +
+                "    unitID: '159917166'\n" +
+                "  : null\n";
+        YamlExecuteProcessContext unmarshal = YamlEngine.unmarshal(marshal, YamlExecuteProcessContext.class);
+        System.out.println("test problem out class ---------" + unmarshal.getUnitStatuses().getClass().getName());
+        for (YamlExecuteProcessUnit unit : unmarshal.getUnitStatuses()) {
+            System.out.println("test problem in class ---------" + unit.getClass().getName());
+            if (unit.getStatus() != ExecuteProcessConstants.EXECUTE_STATUS_DONE) {
+                return;
+            }
+        }
     }
 }
