@@ -1,6 +1,7 @@
 package com.lingh.pojo;
 
 import com.lingh.ssInterface.ShardingSphereYamlTupleProcessor;
+import org.yaml.snakeyaml.DumperOptions;
 import org.yaml.snakeyaml.introspector.Property;
 import org.yaml.snakeyaml.nodes.Node;
 import org.yaml.snakeyaml.nodes.NodeTuple;
@@ -38,7 +39,7 @@ public final class ShardingSphereYamlRepresenter extends Representer {
 
     @SuppressWarnings({"rawtypes", "unchecked"})
     @Override
-    protected Node representMapping(final Tag tag, final Map<?, ?> mapping, final Boolean flowStyle) {
+    protected Node representMapping(final Tag tag, final Map<?, ?> mapping, final DumperOptions.FlowStyle flowStyle) {
         Map skippedEmptyValuesMapping = new LinkedHashMap<>(mapping.size(), 1);
         for (Entry<?, ?> entry : mapping.entrySet()) {
             if (entry.getValue() instanceof Collection && ((Collection) entry.getValue()).isEmpty()) {

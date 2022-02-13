@@ -23,8 +23,9 @@ public class JunitTest {
         System.out.println(marshal);
         System.out.println("print end-------------------------");
         YamlExecuteProcessContext unmarshal = YamlEngine.unmarshal(marshal, YamlExecuteProcessContext.class);
+        System.out.println("test problem out class ---------"+unmarshal.getUnitStatuses().getClass().getName());
         for (YamlExecuteProcessUnit unit : unmarshal.getUnitStatuses()) {
-            System.out.println("test problem class ---------"+unit.getClass().getName());
+            System.out.println("test problem in class ---------"+unit.getClass().getName());
             if (unit.getStatus() != ExecuteProcessConstants.EXECUTE_STATUS_DONE) {
                 return;
             }
