@@ -12,6 +12,7 @@
         <module>snakeyaml-old-version-test</module>
         <module>snakeyaml-new-version-test</module>
         <module>minimal-problem-reproduction</module>
+        <module>jackson-test</module>
     </modules>
 
     <properties>
